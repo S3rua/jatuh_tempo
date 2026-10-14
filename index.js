@@ -4,8 +4,21 @@ require("dotenv").config();
 const express = require("express");
 const db = require("./config/database");
 
+
+const pelangganRoutes = require("./routes/pelangganRoutes");
+const penempatanRoutes = require("./routes/penempatanRoutes");
+const usersRoutes = require("./routes/usersRoutes");
+
+
 const app = express();
 app.use(express.json());
+
+
+app.use("/pelanggan", pelangganRoutes);
+app.use("/penempatan", penempatanRoutes);
+app.use("/user", usersRoutes);
+
+
 
 app.get("/", (req, res) => {
   res.json({
